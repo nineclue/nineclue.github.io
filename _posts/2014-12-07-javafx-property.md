@@ -54,9 +54,9 @@ res3: Number = 102
 
 위에서 sumN1N2 binding은 n1과 n2의 값이 변화에 따라 합을 구하게 되는데 내부적으로는 항상 값을 구하지 않고 getValue 함수로 값을 요구할 때 계산을 실행한다. `InvalidationListener`의 경우 값이 변할 때 실제 값을 구하지는 않지만 `ChangeListener`의 경우 변화한 값을 구해야 하므로 변화할 때마다 실제 값을 구하게 된다.
 
-h5. UPDATE
+##### UPDATE #####
 
-Property와 bind를 처음 접하고 든 해보려고 한 실험은 VBox의 children을 Node의 collection에 bind하고 node collection은 좀 더 단순한 스칼라 (혹은 자바) collection에 bind하는 것이었다. 부연하자면 *스칼라의 collection을 수정하면 거기에 맞춰 Node collection이 update되고 VBox까지 함께 update*되는 뭐 그런걸 생각했다는 말이다.
+Property와 bind를 처음 접하고 든 해보려고 한 실험은 VBox의 children을 Node의 collection에 bind하고 node collection은 좀 더 단순한 스칼라 (혹은 자바) collection에 bind하는 것이었다. 부연하자면 **스칼라의 collection을 수정하면 거기에 맞춰 Node collection이 update되고 VBox까지 함께 update**되는 뭐 그런걸 생각했다는 말이다.
 
 아무튼 binding을 사용하려면 property를 지원해야 하는데 VBox의 children는 property를 지원하지 않고 대부분에서 숫자값을 property로 지원하고 있다. Children을 자동으로 update하려면 ObservableValue에 ChangeListener를 붙여서 변화에 따라 children을 맞춰주는 code를 따로 작성하도록 해야 할것 같다.
 
