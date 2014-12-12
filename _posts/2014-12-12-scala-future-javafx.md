@@ -7,7 +7,7 @@ tags: scala
 
 JavaFX를 이리저리 만져보다 scala의 Future와 합치면 콘솔에서 글을 입력받고 JavaFX에서 표시할 수 있겠다는 생각이 들었다. StackOverflow를 좀 검색해 본 다음 이리저리 실험해 보니 가능하다. Thread를 따로 설정해야 하는데 Console input 부분은 scala에서 제공하는 기본 ExecutionContex를 사용하고 JavaFX의 화면에 관계된 부분을 업데이트 하는 부분은 JavaFX의 thread에서 실행되도록 하는게 중요한듯 하다.
 
-![콘솔 입력을 JavaFX 화면에 출력하기](assets/ConsoleInputJavaFx.png)
+![콘솔 입력을 JavaFX 화면에 출력하기]({{ site.url}}/assets/ConsoleInputJavaFx.png)
 
 * `pipeLoop` 함수에서 2개의 ExecutionContex를 받아서 두개의 code가 서로 다른 context에서 실행될 수 있도록 하는 것이 중요한 포인트.
 * texts에 입력받은 문자열을 추가하는 부분에서 addListener의 코드를 사용해도 되지만 ObservableList와 ListChangeListener가 어떻게 동작하는지 알아볼 겸 ArrayList에 문자열만 추가하고 ListChangeListner에서 추가된 문자열을 다시 Text Node로 만들어 VBox에 붙이도록 했다.
