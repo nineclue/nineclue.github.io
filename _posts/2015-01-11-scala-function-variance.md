@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Scala 함수의 variance
+title: Scala에서 함수형의 variance
 category: programming
 tags: scala
 ---
