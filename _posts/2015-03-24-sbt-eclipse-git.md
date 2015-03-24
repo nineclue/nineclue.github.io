@@ -15,7 +15,7 @@ tags: scala
 6. .gitignore를 적당히 수정
 
 
-{% highlight %}
+{% highlight text %}
 *.class
 *.log
 
