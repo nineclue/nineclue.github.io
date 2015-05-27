@@ -90,4 +90,4 @@ public final class ImprovedNoise {
 
 스칼라로 같은 함수를 구현해 보았는데 그리 깔끔하지는 않지만 동일한 값을 얻을 수 있습니다. 이론적으로는 3개 이상의 값을 주어도 값을 구할 수 있는데 적당한 grad 함수를 만들지 못해서 현재로는 1개에서 3개 사이의 값만 받도록 해 놓았습니다. 이 함수와 첫번째 프로그램의 소스는 [여기](https://gist.github.com/nineclue/68356dff7fd6049b6647)에서 보실 수 있습니다.
 
-전체적으로는 [Understanding Perlin Noise](flafla2.github.io/2014/08/09/perlinnoise.html)이 많은 도움이 되었습니다.
+전체적으로는 [Understanding Perlin Noise](http://flafla2.github.io/2014/08/09/perlinnoise.html)의 내용이 많은 도움이 되었습니다.
