@@ -1,7 +1,7 @@
 ---
 layout: post
 title: OSX matplotlib에서 한글폰트
-category: setup
+category: programming
 tags: matplotlib ipython
 ---
 matplotlib에서 설치된 폰트는 다음과 같은 명령으로 볼수 있다.
