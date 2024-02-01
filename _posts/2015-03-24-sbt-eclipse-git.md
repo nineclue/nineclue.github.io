@@ -5,7 +5,7 @@ category: programming
 tags: scala
 ---
 
-자주 쓰이므로 [스택 오버플로우](http://stackoverflow.com/questions/15381294/how-to-initialize-a-new-scala-project-in-sbt-eclipse-and-github)에서 발췌
+자주 쓰이므로 [스택 오버플로우](https://stackoverflow.com/questions/15381294/how-to-initialize-a-new-scala-project-in-sbt-eclipse-and-github)에서 발췌
 
 1. github이나 bitbucket에 repository 생성
 2. sbt에 [sbt eclipse plugin 설치](https://github.com/typesafehub/sbteclipse/)

@@ -60,4 +60,4 @@ Property와 bind를 처음 접하고 든 해보려고 한 실험은 VBox의 chil
 
 아무튼 binding을 사용하려면 property를 지원해야 하는데 VBox의 children는 property를 지원하지 않고 대부분에서 숫자값을 property로 지원하고 있다. Children을 자동으로 update하려면 ObservableValue에 ChangeListener를 붙여서 변화에 따라 children을 맞춰주는 code를 따로 작성하도록 해야 할것 같다.
 
-Property와 bind에 대해서는 [다음](http://blog.netopyr.com/2011/05/13/javafx-properties/)에 기본적인 개념 설명이 잘 되어 있는 듯.
+Property와 bind에 대해서는 [다음](https://blog.netopyr.com/2011/05/13/javafx-properties/)에 기본적인 개념 설명이 잘 되어 있는 듯.

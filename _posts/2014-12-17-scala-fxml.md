@@ -76,7 +76,7 @@ class FxmlTest extends Application {
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="https://javafx.com/javafx/8" xmlns:fx="https://javafx.com/fxml/1">
    <left>
       <VBox spacing="5.0" BorderPane.alignment="CENTER">
          <children>

@@ -36,4 +36,4 @@ def future2FutureTry[T](f:Future[T]):Future[Try[T]] =
 
 각 Future가 걸린 시간과 결과를 보여주는 전체 소스는 [github](https://gist.github.com/nineclue/8ae82583da87e3be6049)에서 보실 수 있겠습니다.
 
-참고 : [StackOverflow](http://stackoverflow.com/questions/20874186/scala-listfuture-to-futurelist-disregarding-failed-futures)
+참고 : [StackOverflow](https://stackoverflow.com/questions/20874186/scala-listfuture-to-futurelist-disregarding-failed-futures)
