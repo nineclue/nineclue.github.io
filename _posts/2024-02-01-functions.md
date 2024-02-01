@@ -91,7 +91,7 @@ listOptOpt.fproduct(List(Some(Some(2)), None, Some(None), Some(Some(4))))(_ + 1)
 {% endhighlight %}
 
 ## monad transformer
-* monad 속에 monad가 있는 경우, 내부의 monad가 아닌 값을 liftF를 사용하여 monad를 적용시키고 있다
+* 아래의 경우 monad 속에 monad가 있는 경우, 내부의 monad가 아닌 값을 liftF를 사용하여 monad를 적용시키고 있다. 함수가 아닌 type을 lift한다고 연상하면 될듯.
 {% highlight scala %}
 val sayHello: Future[Option[String]] = Future.successful(Some("Say hello to"))
 val firstname: Future[String] = Future.successful("Fabio")
