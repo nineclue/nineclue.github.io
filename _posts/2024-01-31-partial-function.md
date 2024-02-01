@@ -6,7 +6,7 @@ category: programming
 tags: scala
 ---
 
-Baeldung.com에서 Scala에 관한 문서를 읽다 다음과 같은 내용을 발견했다. 
+[Baeldung.com에서 Scala에 관한 문서](https://www.baeldung.com/scala/functional-programming-series)를 읽다 다음과 같은 내용을 발견했다. 
 
 {% highlight scala %}
 def calculateSellingPrice(discount: Double, productPrice: Double): Double = {
