@@ -77,18 +77,26 @@ Functor[List].compose[Option].map(l)(_.length)   // baeldung의 예제... (@.@)?
   map과 동일하나 인자와 결과값을 tuple로 반환한다. 바로 Map에 인자로 줄 수 있다.
 * compose  
   같은 Functor끼리 결합
-{% highlight scala %}
-Functor[List].fproduct(List(1,2,3))(_.toString) // List((1, "1"), (2, "2"), (3, "3"))
+  {% highlight scala %}
+  Functor[List].fproduct(List(1,2,3))(_.toString) // List((1, "1"), (2, "2"), (3, "3"))
 
-val listOptOpt = Functor[List].compose(Functor[Option]).compose(Functor[Option])
-listOptOpt.fproduct(List(Some(Some(2)), None, Some(None), Some(Some(4))))(_ + 1) 
-// List(
-  Some(value = Some(value = (2, 3))),
-  None,
-  Some(value = None),
-  Some(value = Some(value = (4, 5)))
-)
-{% endhighlight %}
+  val listOptOpt = Functor[List].compose(Functor[Option]).compose(Functor[Option])
+  listOptOpt.fproduct(List(Some(Some(2)), None, Some(None), Some(Some(4))))(_ + 1) 
+  // List(
+    Some(value = Some(value = (2, 3))),
+    None,
+    Some(value = None),
+    Some(value = Some(value = (4, 5)))
+  )
+  {% endhighlight %}
+* 기본적으로 Either는 내부에 형을 2개 포함하므로 바로 `Functor[Either]`와 같이 사용할 수 없다.  
+  하지만 type 문으로 형을 하나 지정해주면 다음과 같이 사용할 수 있다.
+  {% highlight scala %}
+  type FF[A] = Either[String, A]
+  val listFF = Functor[List] compose Functor[FF]
+  listFF.map(List(Left("abc"), Right(123), Right(776)))(_ + 1)
+  // List(Left("abc"), Right(124), Right(777))
+  {% endhighlight %}
 
 ## monad transformer
 * 아래의 경우 monad 속에 monad가 있는 경우, 내부의 monad가 아닌 값을 liftF를 사용하여 monad를 적용시키고 있다. 함수가 아닌 type을 lift한다고 연상하면 될듯.
