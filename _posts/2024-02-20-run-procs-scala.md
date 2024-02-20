@@ -19,9 +19,9 @@ os.proc으로 실행시킬 프로그램, 인자, 실행 위치 등을 지정할 
 ### scala-cli
 scala-cli를 사용하면 build.sbt를 사용하지 않고도 `>// using dep` 형식으로 사용할 라이브러리들을 지정할 수 있고 **package** 명령을 사용하면 직접 컴파일해서 실행 파일까지 만들어 줍니다. 현재로는 graal-native image는 잘 동작하나 더 작은 크기의 scala-native를 사용하는 native 명령은 컴파일 에러가 발생합니다. 예전에 scala-native 사용해서 실행파일을 만든 적이 있는데 지금 버전은 왜 그런지 모르겠네요. 
 
-> ##### Warning
+> ##### Tip
 > `>// using dep` 명령 사용시 native 형식을 사용하기 위해서는 `//> using dep com.lihaoyi::os-lib::0.9.3`와 같이 두번째 버전 앞에 콜론을 2개 사용해야 합니다. `os-lib:0.9.3`과 같이 colon을 하나만 사용하면 JVM에서는 잘 동작하지만 native 형식에서는 컴파일이 되지 않습니다.
-{.block-warning}
+{: .block-warning}
 
 ```scala
 //> using scala 3.3.1
