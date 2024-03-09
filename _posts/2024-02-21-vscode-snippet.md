@@ -2,7 +2,7 @@
 layout: post
 title: Jekyll용 VSCode snippet
 date: 2024-02-21 11:07
-category:  random
+category:  setup
 tags: 
 ---
 
