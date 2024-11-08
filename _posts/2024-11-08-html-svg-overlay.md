@@ -86,7 +86,7 @@ object JSMain:
 > 소스 코드를 수정할 때마다 `sbt fastLink` 명령을 실행해 줘야 새로운 javascript 파일이 컴파일되며 이것이 귀찮은 분들을 위해 `sbt` 실행후 프롬프트에서 `~fastLinkJS` 명령을 실행하면 소스코드가 변결될 때마다 새로 컴파일합니다. 
 {: .block- info}
 
-브라우저에 여러 div element들이 표시되는 것을 확인하였으면 이제 image와 svg element를 겹쳐서 표시해 봅시다. image는 scala.js 로고 svg 파일을 800 X 800 픽셀 크기의 png 파일로 변환한 것이며 둘의 **position**을 **absolute**로 지정하였고 이들의 containing block이 body가 되지 않기 위해 상부에 "container" 이름의 div로 감싸고 이의 **position**을 **relative**로 하였습니다. 그리고 div의 크기 역시 image, svg와 동일하게 지정하였습니다. Element들의 positioning에 대해서는 [문서]:(https://developer.mozilla.org/en-US/docs/Web/CSS/position)를 참조하시면 되겠습니다.
+브라우저에 여러 div element들이 표시되는 것을 확인하였으면 이제 image와 svg element를 겹쳐서 표시해 봅시다. image는 scala.js 로고 svg 파일을 800 X 800 픽셀 크기의 png 파일로 변환한 것이며 둘의 **position**을 **absolute**로 지정하였고 이들의 containing block이 body가 되지 않기 위해 상부에 "container" 이름의 div로 감싸고 이의 **position**을 **relative**로 하였습니다. 그리고 div의 크기 역시 image, svg와 동일하게 지정하였습니다. Element들의 positioning에 대해서는 [문서](https://developer.mozilla.org/en-US/docs/Web/CSS/position)를 참조하시면 되겠습니다.
 
 #### JSMain.scala
 ```scala
@@ -160,4 +160,4 @@ def mouseHandler(con: Element, s: Element)(e: MouseEvent) =
 ```
 
 전체 소스 코드는 [github](https://github.com/nineclue/html_with_svg)에서 받을 수 있습니다.
-[실행화면](./assets/html_with_svg.png)
+![실행화면](assets/html_with_svg.png)
