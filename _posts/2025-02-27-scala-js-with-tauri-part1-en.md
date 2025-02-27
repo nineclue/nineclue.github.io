@@ -27,7 +27,7 @@ CD into the project folder and install packages. Then make an application and ru
 >> pnpm instal
 >> pnpm tauri dev
 ```
-![default tauri app](tauri.png)
+![default tauri app](/assets/tauri.png)
 ### Structure of the project folder
 Simplified structure of the project folder with important files are as follows
 ```
