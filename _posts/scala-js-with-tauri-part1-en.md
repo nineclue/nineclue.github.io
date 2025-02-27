@@ -3,18 +3,18 @@ layout: post
 title: Let's make a App with Scala.js and Tauri part 1
 date: 2025-02-21 09:38
 category: programming
-tags: scala tauri
+tags: scala, tauri
 ---
-[Tauri](https://tauri.app) is a framework for building tiny, fast binaries for all major desktop and mobile platforms. An Javascript app will run as if it was running within browser. Let's make a simple application using [scala.js](https://scala-js.org).
+[Tauri](https://tauri.app) is a framework for building tiny, fast binaries for all major desktop and mobile platforms. Javascript app will run as if it was running within browser. Let's make a simple application using [scala.js](https://scala-js.org).
 
-### Requirements
+### Requirements for Tauri
 Build tools for each platform, rust and node.js must be installed first. See [tauri's document](https://tauri.app/start/prerequisites/).
 
 ### Creation of an application
-Tauri supports ways of creating app's skeleton. We'll use [`pnpm`](https://pnpm.io). Install it before running following commands. When it runs, it will ask questions to answer. Use your own name and identifier for first two questions.
+Tauri supports ways of creating app's skeleton. We'll use [`pnpm`](https://pnpm.io). Install it before running following commands. When it runs, it will ask questions to answer. Enter your own identifier for second question.
 ```
 >> pnpm create tauri-app
-✔ Project name · <tauri-app>
+✔ Project name · tauri-app
 ✔ Identifier · <your unique identifier>
 ✔ Choose which language to use for your frontend · TypeScript / JavaScript - (pnpm, yarn, npm, deno, bun)
 ✔ Choose your package manager · pnpm
@@ -28,9 +28,8 @@ CD into the project folder and install packages. Then make an application and ru
 >> pnpm tauri dev
 ```
 ![default tauri app](tauri.png)
-
 ### Structure of the project folder
-Simplified structure of the project folder is as follows
+Simplified structure of the project folder with important files are as follows
 ```
 +- src : where our javascript app will be located
 |  - index.html : skeleton of app
@@ -41,12 +40,10 @@ Simplified structure of the project folder is as follows
 +- node_modules : handled by pnpm
 - package.json : package file for node.js
 ```
-
 ### Let Scala render the screen
 Now it's time for scala.js. I will use [mill](https://mill-build.org) as a build tool and [scalatags](https://github.com/com-lihaoyi/scalatags) for HTML. ~~Welcome to [Li Haoyi](https://github.com/lihaoyi) world.~~
-
 ##### install mill
-As [mill's installation page](https://mill-build.org/mill/cli/installation-ide.html), the standard method of installing mill is to install mill script at project folder. I've had problem running mill in Windows 11 PC. Following should work in macOS and linux.
+As [mill's installation page](https://mill-build.org/mill/cli/installation-ide.html), the standard method of installing mill is to install mill script at project folder. I've had problem running mill in Windows and had to edit `mill.bat` to change default mill version. Following will work in macOS and linux.
 ```
 >> curl -L https://repo1.maven.org/maven2/com/lihaoyi/mill-dist/0.13.0-M0/mill -o mill
 >> chmod +x mill
@@ -59,7 +56,7 @@ Mill's build file is `build.sc` and mill requires separate source folder.
 >> touch front/src/Front.scala
 ```
 ##### build.sc
-`front` in `build.sc` matches the folder name. All source files, resources and test files reside within that folder. `fscala` task compiles scala code and copies the resulting javascript codes to `src` folder. `mill`'s build file is using scala 2.13 syntax, so square brackets are needed.
+Object `front` in `build.sc` matches the folder name. All source files, resources and test files reside within that folder. `fscala` task compiles scala code and copies the resulting javascript codes to `src` folder. `mill`'s build file is using scala 2.13 syntax, so square brackets are needed.
 ``` scala
 import mill._, scalalib._, scalajslib._
 
@@ -78,7 +75,7 @@ object front extends ScalaJSModule {
 }
 ```
 ##### Front.scala
-Same as original index.html structure. Just using scalatags to render into document's boby.
+Using scalatags to render into document's boby. The structure of tags are same as original index.html.
 ``` scala
 import org.scalajs.dom
 import scalatags.JsDom.all.*
@@ -109,6 +106,7 @@ object Front:
         )
 ```
 ##### index.html
+Remove all tags in body.
 ``` html
 <!doctype html>
 <html lang="en">
@@ -123,7 +121,7 @@ object Front:
   </body>
 </html>
 ```
-Now let's see the result. First line compiles scala code to javascript and copy the result code to `src` folder.
+First line compiles scala to javascript code and copy it to `src` folder.
 ``` bash
 >> ./mill front.fscala
 >> pnpm tauri dev
