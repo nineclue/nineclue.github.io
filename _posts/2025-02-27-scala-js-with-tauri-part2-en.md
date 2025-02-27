@@ -3,7 +3,7 @@ layout: post
 title: Let's make a App with Scala.js and Tauri part 2
 date: 2025-02-24 14:16
 category: programming
-tags: scala, tauri
+tags: [scala, tauri]
 ---
 
 Previously we rendered app's screen using scala.js and scalatags. Let's call Tauri's javascript API from scala.

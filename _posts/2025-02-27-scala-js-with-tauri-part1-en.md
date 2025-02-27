@@ -3,7 +3,7 @@ layout: post
 title: Let's make a App with Scala.js and Tauri part 1
 date: 2025-02-21 09:38
 category: programming
-tags: scala, tauri
+tags: [scala, tauri]
 ---
 [Tauri](https://tauri.app) is a framework for building tiny, fast binaries for all major desktop and mobile platforms. Javascript app will run as if it was running within browser. Let's make a simple application using [scala.js](https://scala-js.org).
 
