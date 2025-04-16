@@ -47,7 +47,7 @@ object front extends ScalaJSModule {
     ...
     def ivyDeps = Agg(
       ivy"com.lihaoyi::scalatags::0.13.1",
-      // add tauri facade in dependencies
+      // add tauri facade in dependencies, number may be different regarding version see the result of stc command
       ivy"org.scalablytyped::tauri-apps__api::2.2.0-631484",
     )
 
