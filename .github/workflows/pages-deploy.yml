@@ -34,6 +34,10 @@ jobs:
           # submodules: true
           # If using the 'assets' git submodule from Chirpy Starter, uncomment above
           # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22' # 로컬과 맞춘 최신 버전
 
       - name: Setup Pages
         id: pages
@@ -44,6 +48,12 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
+
+      - name: Install JS dependencies
+        run: npm install
+
+      - name: Build assets
+        run: npm run build
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
