@@ -3,15 +3,19 @@ layout: post
 title: Let's make a App with Scala.js and Tauri part 1
 date: 2025-02-21 09:38
 category: programming
-tags: [scala, tauri]
+tags: [scala tauri]
 ---
+
 [Tauri](https://tauri.app) is a framework for building tiny, fast binaries for all major desktop and mobile platforms. Javascript app will run as if it was running within browser. Let's make a simple application using [scala.js](https://scala-js.org).
 
 ### Requirements for Tauri
+
 Build tools for each platform, rust and node.js must be installed first. See [tauri's document](https://tauri.app/start/prerequisites/).
 
 ### Creation of an application
+
 Tauri supports ways of creating app's skeleton. We'll use [`pnpm`](https://pnpm.io). Install it before running following commands. When it runs, it will ask questions to answer. Enter your own identifier for second question.
+
 ```
 >> pnpm create tauri-app
 ✔ Project name · tauri-app
@@ -21,15 +25,21 @@ Tauri supports ways of creating app's skeleton. We'll use [`pnpm`](https://pnpm.
 ✔ Choose your UI template · Vanilla
 ✔ Choose your UI flavor · JavaScript
 ```
+
 CD into the project folder and install packages. Then make an application and run it. A window with icons and simple form will be shown.
+
 ```
 >> cd tauri-app
 >> pnpm instal
 >> pnpm tauri dev
 ```
+
 ![default tauri app](/assets/tauri.png)
+
 ### Structure of the project folder
+
 Simplified structure of the project folder with important files are as follows
+
 ```
 +- src : where our javascript app will be located
 |  - index.html : skeleton of app
@@ -40,52 +50,65 @@ Simplified structure of the project folder with important files are as follows
 +- node_modules : handled by pnpm
 - package.json : package file for node.js
 ```
+
 ### Let Scala render the screen
+
 Now it's time for scala.js. I will use [mill](https://mill-build.org) as a build tool and [scalatags](https://github.com/com-lihaoyi/scalatags) for HTML. ~~Welcome to [Li Haoyi](https://github.com/lihaoyi) world.~~
+
 ##### install mill
+
 As [mill's installation page](https://mill-build.org/mill/cli/installation-ide.html), the standard method of installing mill is to install mill script at project folder. I've had problem running mill in Windows and had to edit `mill.bat` to change default mill version. Following will work in macOS and linux.
+
 ```
 >> curl -L https://repo1.maven.org/maven2/com/lihaoyi/mill-dist/0.13.0-M0/mill -o mill
 >> chmod +x mill
 >> echo 0.12.8 > .mill-version
 ```
-Mill's build file is `build.sc` and mill requires separate source folder. 
+
+Mill's build file is `build.sc` and mill requires separate source folder.
+
 ```
 >> touch build.sc
 >> mkdir -p front/src
 >> touch front/src/Front.scala
 ```
+
 ##### build.sc
+
 Object `front` in `build.sc` matches the folder name. All source files, resources and test files reside within that folder. `fscala` task compiles scala code and copies the resulting javascript codes to `src` folder. `mill`'s build file is using scala 2.13 syntax, so square brackets are needed.
-``` scala
+
+```scala
 import mill._, scalalib._, scalajslib._
 
 object front extends ScalaJSModule {
     def scalaVersion = "3.6.3"
     def scalaJSVersion = "1.18.2"
     def ivyDeps = Agg(ivy"com.lihaoyi::scalatags::0.13.1")
-	def fscala = Task {
-		val jsPath = front.fastLinkJS().dest.path
-		val targetPath = jsPath / os.up / os.up / os.up / "src"
-		val target = targetPath / "main.js"
-		os.copy.over(jsPath / "main.js", target)
-		os.copy.over(jsPath / "main.js.map", targetPath / "main.js.map")
-		PathRef(target)
+ def fscala = Task {
+  val jsPath = front.fastLinkJS().dest.path
+  val targetPath = jsPath / os.up / os.up / os.up / "src"
+  val target = targetPath / "main.js"
+  os.copy.over(jsPath / "main.js", target)
+  os.copy.over(jsPath / "main.js.map", targetPath / "main.js.map")
+  PathRef(target)
     }
 }
 ```
+
 ##### Front.scala
+
 Using scalatags to render into document's boby. The structure of tags are same as original index.html.
-``` scala
+
+```scala
 import org.scalajs.dom
 import scalatags.JsDom.all.*
 
 object Front:
-    def main(args: Array[String]): Unit = 
+    def main(args: Array[String]): Unit =
         // render tags into body
         dom.document.body.appendChild(content.render)
 
-    val content = 
+    val content =
         tag("main")(cls := "container",
             h1(s"Welcome to Tauri with Scala.js"),
             div(cls := "row",
@@ -105,9 +128,12 @@ object Front:
             p(id := "greet-msg")
         )
 ```
+
 ##### index.html
+
 Remove all tags in body.
-``` html
+
+```html
 <!doctype html>
 <html lang="en">
   <head>
@@ -117,14 +143,17 @@ Remove all tags in body.
     <title>Tauri App</title>
     <script type="module" src="/main.js" defer></script>
   </head>
-  <body>
-  </body>
+  <body></body>
 </html>
 ```
+
 First line compiles scala to javascript code and copy it to `src` folder.
-``` bash
+
+```bash
 >> ./mill front.fscala
 >> pnpm tauri dev
 ```
-Now app's appearance is same as initial code, but screen is rendered from scala code. 
+
+Now app's appearance is same as initial code, but screen is rendered from scala code.
 Greet button does not work as previously. This functionality requires calling Tauri's API, which will be handled at part 2.
+

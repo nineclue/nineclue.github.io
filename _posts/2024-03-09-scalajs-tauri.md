@@ -3,7 +3,7 @@ layout: post
 title: Tauri에서 Scala.js 사용하기
 date: 2024-03-09 10:07
 category: programming
-tags: scala, rust
+tags: [scala, rust]
 ---
 
 예전에 medium에 scala.js와 scalajs-react를 tauri에서 사용하는 방법에 대해 포스팅한 적이 있었습니다. ~~포스팅하고 위치를 까먹어서(?!) 한참 찾다가 포기했었는데 구글에서 검색하다보니 medium에 있었다는~~
@@ -14,16 +14,16 @@ scalatags는 서버에서 html을 렌더링할때 사용할수도 있지만 scal
 
 rust의 메소드를 호출하기 위해 Tauri의 `invoke` 메소드의 facade를 **TauriCore**에서 작성하였으며 이 `invoke` 함수는 `Promise`를 반환하므로 `Future`로 바꾸어 scala에서 처리하였습니다.
 
-* javascript
-    ``` javascript
-    const { invoke } = window.__TAURI__.core;
-    ```
-* scala.js
-    ``` scala
-    @js.native
-    @JSGlobal("window.__TAURI__.core")
-    object TauriCore extends js.Object:
-        def invoke(fname: String, a: js.Object): Promise[js.Object] = js.native
-    ```
+- javascript
+  ```javascript
+  const { invoke } = window.__TAURI__.core;
+  ```
+- scala.js
+  ```scala
+  @js.native
+  @JSGlobal("window.__TAURI__.core")
+  object TauriCore extends js.Object:
+      def invoke(fname: String, a: js.Object): Promise[js.Object] = js.native
+  ```
 
 ![ScreenShot](assets/tauri_scalajs.jpg)

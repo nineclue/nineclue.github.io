@@ -2,7 +2,8 @@
 layout: post
 title: "nvim으로 에디터 변경"
 date: 2026-04-07
-tags: [setup]
+category: setup
+tags:
 ---
 
 근황에 가까운 가벼운 포스팅입니다. 작년 9월이 마지막 포스팅이네요.
